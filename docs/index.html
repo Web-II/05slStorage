@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Webapplicaties I - Webstorage</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
+</head>
+
+<body>
+
+    <script src="scripts/remark.min.js"></script>
+    <script>
+        var slideshow = remark.create({
+            sourceUrl: 'presentation.md',
+            highlightLanguage: 'js',
+            highlightSpans: true, // Highlight parts of code via backticks ``
+            highlightStyle: 'vs',
+            highlightLines: true, // Highlight line of code by prefixing the line with *
+        });
+    </script>
+    <script>
+        function splitCookies(){
+            document.cookie.split("; ").forEach((part) => {
+            const arrPart = part.split("=");
+            console.log(`${arrPart[0]} --> ${arrPart[1]}`);
+            });
+        }
+        function encodeCookie(){
+            const name = "my name"; // let op de spatie
+            const value = "John Smith"
+
+            const encodedName = encodeURIComponent(name);
+            const encodedValue = encodeURIComponent(value);
+
+            // encodes the cookie as my%20name=John%20Smith
+            document.cookie = encodedName + '=' + encodedValue;
+
+            alert(document.cookie); // ...; my%20name=John%20Smith
+        }
+        </script>
+</body>
+
+</html>
