@@ -1,6 +1,6 @@
 class: dark middle
 
-# Webapplicaties I
+# Webapplicaties II
 > Hoofdstuk 5 - Webstorage
 > 
 ---
@@ -56,7 +56,7 @@ gevraagd wordt.
 1. De client vraagt aan de server de pagina op, hierbij worden **cookies** meegestuurd in de **header** van het `request`.
 2. De server merkt op dat de taal nog niet gekozen is, er is namelijk **geen language cookie**.
 3. De server geeft een pagina terug waarop je de taal kan kiezen.
-4. De gebruiker kiest de taal en er wordt een cookie opgeslaan voor het **domein** van de website.
+4. De gebruiker kiest de taal en er wordt een cookie opgeslagen voor het **domein** van de website.
 5. De volgende pagina die de client zal opvragen, zal de cookie meesturen waardoor de taal niet opnieuw gekozen moet worden.
 
 > Zelfs als je de browser sluit, is de taal nog steeds gekozen aangezien de cookie nog geldig is.
@@ -66,7 +66,7 @@ gevraagd wordt.
 ### Cookies
 # Geldigheid
 
-Een cookie blijft bestaan, zelfs als je de tab of browser sluit. De cookie kan je verwijderen worden door:
+Een cookie blijft bestaan, zelfs als je de tab of browser sluit. De cookie kan je verwijderen door:
 
 - Manuele acties te nemen
     - `CTRL + SHIFT + DEL` in Chrome of Edge in te geven en **alle** cookies te verwijderen
@@ -89,7 +89,6 @@ Cookies hebben verschillende opties, veel daarvan zijn belangrijk en moeten word
 - [domain](https://javascript.info/cookie#domain)
 - [expires, max-age](https://javascript.info/cookie#expires-max-age)
 - [secure](https://javascript.info/cookie#secure)
-- [samesite](https://javascript.info/cookie#samesite)
 - [httpOnly](https://javascript.info/cookie#httponly)
 
 ---
@@ -98,7 +97,7 @@ Cookies hebben verschillende opties, veel daarvan zijn belangrijk en moeten word
 We kunnen naar `document.cookie` schrijven. Maar het is geen data eigenschap, het is een `accessor (getter/setter)`.
 Een schrijfoperatie naar `document.cookie` werkt alleen de cookies bij die erin worden genoemd, maar **muteert geen andere cookies**.
 
-> Stel een cookie in met de naam `user` en de waarde `John`:
+> Stel een cookie in met de naam `taal` en de waarde `NL`:
 
 ```js
 document.cookie = 'taal=NL'
@@ -115,7 +114,7 @@ document.cookie = 'taal=;max-age=-1'
 ---
 ### Cookies
 # Client-side
-Om een bepaald cookie te vinden, kunnen we `document.cookie` splitsen door `;` en dan de juiste naam vinden. We kunnen hiervoor een reguliere expressie of array-functies gebruiken.
+Om een bepaalde cookie te vinden, kunnen we `document.cookie` splitsen door `;` en dan de juiste naam vinden. We kunnen hiervoor een reguliere expressie of array-functies gebruiken.
 
 > Geeft alle cookies terug.
 
@@ -240,14 +239,14 @@ Interessant is dat de data een **pagina refresh overleeft** (`sessionStorage`) e
 - Data **blijft beschikbaar** als het venster, tabblad of browser sluit.
 
 **Sessionstorage**
-- Beschikbaarheid **per tabblad/venster**, wordt niet gedeeld met een andere venster of tabblad
+- Beschikbaarheid **per tabblad/venster**, wordt niet gedeeld met een ander venster of tabblad
 - Data is verdwenen na het sluiten van het venster of tabblad.
 
 ---
 ### Webstorage
 # Caveats
 - Er kunnen **enkel strings** opgeslagen worden. 
-> Hou hiermee rekening als er objecten of `arrays` van `objecten` opgeslaan hoeven te worden.
+> Hou hiermee rekening als er objecten of `arrays` van `objecten` opgeslagen hoeven te worden.
 - De inhoud kan **door de gebruiker** **bekeken**, **gewijzigd** en **verwijderd** worden.
 - **Per domein**
 
@@ -536,7 +535,7 @@ window.onload = init;
 ```
 - Hier kan je ook `sessionStorage` gebruiken.
 - `window.localStorage` en `localStorage` zijn equivalent.
-- `stickiesComponent` zal de logica bevatten.
+
 ---
 
 ```js
@@ -590,7 +589,7 @@ function init() {
 }
 window.onload = init;
 ```
-- ` = function () ...` gaat `'this'` laten refereren naar het `HTMLelement` die het event triggered in dit geval de `clearButton`.
+- ` = function () ...` laat `'this'` refereren naar het `HTMLelement` die het event triggered in dit geval de `clearButton`.
 - **Geen arrow-functie**, `this` zou dan refereren naar het `window` object.
 ---
 
@@ -687,7 +686,7 @@ class StickiesComponent {
 3. Kijk na in de `localStorage` -via de browser- of er waarden werden toegevoegd.
 4. Stop het voorbeeld of sluit de browser.
 5. Herstart het voorbeeld of open de browser terug.
-6. Kijk na in de `localStorage` via de browser of er waarden nog bestaan.
+6. Kijk na in de `localStorage` via de browser of er nog waarden bestaan.
 7. Pas de storage aan van `localStorage` naar `sessionStorage`.
 ```js
 function init() {
@@ -703,7 +702,7 @@ function init() {
 # Objects
 Zoals reeds aangegeven is het enkel mogelijk om het datatype `string` op te slaan. Het datatype `Object` kan je dus niet -op deze manier- opslaan.
 
-> Standaard wordt de `toString()` methode gebruikt, dit zorgt ervoor dat `[object Object]` als `string` wordt opgeslaan.
+> Standaard wordt de `toString()` methode gebruikt, dit zorgt ervoor dat `[object Object]` als `string` wordt opgeslagen.
 
 ```js
 const myObject = {name:'John', age:12, nationality:'Belgium'};
@@ -715,7 +714,7 @@ alert(localStorage.getItem('user')); // [object Object]
 ---
 ### Storage 
 # Objects
-Een mogelijke oplossing voor dit probleem zou de volgende aanpak kunnen zijn, hierdoor wordt het object wel correct opgeslaan.
+Een mogelijke oplossing voor dit probleem zou de volgende aanpak kunnen zijn, hierdoor wordt het object wel correct opgeslagen.
 ```js
 let user = {
   name: "John",
@@ -776,7 +775,7 @@ De `JSON` (JavaScript Object Notation) is een **algemeen formaat** om waarden en
 - `String` (double-quoted Unicode met backslash escaping)
 - `Boolean` (true or false)
 - `Array` 
-    - Een geordennde lijst van waarden, gescheiden door komma's en omsloten door vierkante haken `[]`. De waarden moeten niet noodzakelijk van hetzelfde type zijn.
+    - Een geordende lijst van waarden, gescheiden door komma's en omsloten door vierkante haken `[]`. De waarden moeten niet noodzakelijk van hetzelfde type zijn.
 - `Object` 
     - Een ongeordende verzameling van `key-value pairs`,gescheiden door een `,` en omsloten door accolades `{}`
 - `Null`
@@ -881,7 +880,7 @@ class StickiesComponent {
   [...]
 }
 ```
-- De functie is grotendeels hetzelfde gebleven, maar aangezien de `sticky` objecten als `string` worden opgeslaan in de `storage`,
+- De functie is grotendeels hetzelfde gebleven, maar aangezien de `sticky` objecten als `string` worden opgeslagen in de `storage`,
 hoeven deze terug naar een object geconverteerd te worden door de functie `JSON.parse(value)`. Nadien wordt van die `object literal` een `sticky` object gemaakt.
 
 ---
@@ -917,7 +916,7 @@ Er zijn 2 functies die je niet hoeft aan te passen:
 # addSticky(note,color)
 - maakt een nieuw object van de class `Sticky` aan.
 - voegt deze toe aan de nieuwe `stickies` array.
-- zorgt ervoor dat de array `stickies` wordt opgeslaan in de storage met behulp van de functie `setStickiesInStorage()`.
+- zorgt ervoor dat de array `stickies` wordt opgeslagen in de storage met behulp van de functie `setStickiesInStorage()`.
 - uiteindelijk zorgt de functie ervoor dat de `toHTML()` wordt opgeroepen om de stickies zichtbaar te maken.
 
 > een oplossing voor deze functie vind je [hier](https://github.com/Web-II/05thStorage/commit/1ee6bbdca038371cbace80b45c9398876ad7f358?diff=split)
