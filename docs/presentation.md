@@ -21,7 +21,7 @@ class: dark middle
 ---
 class: dark middle
 
-# Webapplicaties I
+# Webapplicaties II
 > Hoofdstuk 5 - Webstorage
 
 >  **Cookies**
@@ -187,7 +187,7 @@ Dus, als we een cookie plaatsen die alleen wat informatie opslaat, maar de gebru
 ---
 class: dark middle
 
-# Webapplicaties I
+# Webapplicaties II
 > Hoofdstuk 5 - Webstorage
 
 >  **Webstorage**
