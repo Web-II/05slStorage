@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Webapplicaties I - Webstorage</title>
+    <title>Webapplicaties II - Webstorage</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon.png">
@@ -21,13 +21,14 @@
         });
     </script>
     <script>
-        function splitCookies(){
+        function splitCookies() {
             document.cookie.split("; ").forEach((part) => {
-            const arrPart = part.split("=");
-            console.log(`${arrPart[0]} --> ${arrPart[1]}`);
+                const arrPart = part.split("=");
+                console.log(`${arrPart[0]} --> ${arrPart[1]}`);
             });
         }
-        function encodeCookie(){
+
+        function encodeCookie() {
             const name = "my name"; // let op de spatie
             const value = "John Smith"
 
@@ -39,7 +40,7 @@
 
             alert(document.cookie); // ...; my%20name=John%20Smith
         }
-        </script>
+    </script>
 </body>
 
 </html>
